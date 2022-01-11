@@ -148,8 +148,8 @@ $ ./vendor/bin/phpunit
 ## クレジット
 ### API
 
-<a href="http://www.goo.ne.jp/">
-<img src="//u.xgoo.jp/img/sgoo.png" width="200px" alt="supported by goo" title="supported by goo">
+<a href="https://www.goo.ne.jp/">
+<img src="https://u.xgoo.jp/img/sgoo.png" width="200px" alt="supported by goo" title="supported by goo">
 </a>
 
 ### コード
