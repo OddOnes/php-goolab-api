@@ -67,7 +67,7 @@ $chronoResult1 = GooLabApi::callChrono('今日の10時半に出かけます。')
 
 // 時刻情報正規化API 基準日指定
 // "%Y-%m-%dT%H:%M:%S"のフォーマットで基準となる日時を指定する。省略時には現在時刻が用いられます。
-$chronoResult1 = GooLabApi::callChrono('今日の10時半に出かけます。', '2022-01-01T09:00:00');
+$chronoResult2 = GooLabApi::callChrono('今日の10時半に出かけます。', '2022-01-01T09:00:00');
 
 // キーワード抽出API
 $keywordResult1 = GooLabApi::callKeyword(
@@ -78,7 +78,7 @@ $keywordResult1 = GooLabApi::callKeyword(
 // キーワード抽出API 最大抽出件数/注目固有表現種別指定
 // 最大抽出件数:省略時は10となります。
 // 注目固有表現種別:ORG(組織名)、PSN(人名)、LOC(地名)のうち、スコアを強く算出したい固有表現種別を1種類のみ文字列で指定します。省略時または上記以外の種別指定時は、全ての種別を同等に扱います。
-$keywordResult1 = GooLabApi::callKeyword(
+$keywordResult2 = GooLabApi::callKeyword(
             '「和」をコンセプトとする 匿名性コミュニケーションサービス「MURA」 gooラボでのβ版のトライアル実施 ～gooの検索技術を使った「ネタ枯れ防止機能」によりコミュニティの話題活性化が可能に～',
             'NTTレゾナント株式会社（本社：東京都港区、代表取締役社長：若井 昌宏、以下、NTTレゾナント）は、同じ興味関心を持つ人と匿名でコミュニティをつくることができるコミュニケーションサービス「MURA」を、2015年8月27日よりgooラボ上でβ版サイトのトライアル提供を開始します。',
             50,
@@ -90,20 +90,25 @@ $entityResult1 = GooLabApi::callEntity('鈴木さんがきょうの9時30分に�
 
 // 固有表現抽出API フィルタ指定
 // 固有表現種別フィルタ : ART(人工物名)、ORG(組織名)、PSN(人名)、LOC(地名)、DAT(日付表現)、TIM(時刻表現)、MNY(金額表現)、PCT(割合表現)のうち、出力する情報を文字列で指定します。複数指定する場合は、配列で複数記載してください。省略時は全ての種別を出力します。
-$entityResult1 = GooLabApi::callEntity('鈴木さんがきょうの9時30分に横浜に行きます。', ['ART','ORG','PSN','LOC','DAT','TIM','MNY','PCT']);
+$entityResult2 = GooLabApi::callEntity('鈴木さんがきょうの9時30分に横浜に行きます。', ['ART','ORG','PSN','LOC','DAT','TIM','MNY','PCT']);
 
 // 形態素解析API
-$entityResult1 = GooLabApi::callMorph('美しく飛んでいる燕。料理を美味しく作る。');
+$morphResult1 = GooLabApi::callMorph('美しく飛んでいる燕。料理を美味しく作る。');
 
 // 形態素解析API 語幹結合
 // 動詞語幹/動詞活用語尾/動詞接尾辞 および 形容詞語幹/形容詞接尾辞を結合します。
-$entityResult2 = GooLabApi::callMorph('美しく飛んでいる燕。料理を美味しく作る。', null, null, true);
+$morphResult2 = GooLabApi::callMorph('美しく飛んでいる燕。料理を美味しく作る。', null, null, true);
 
 // 形態素解析API 形態素情報フィルタ/形態素品詞フィルタ
 // 形態素情報フィルタ : form(表記)、pos(形態素)、read(読み)のうち、出力する情報を文字列で指定します。複数指定する場合は、配列で複数記載してください。省略時は"form|pos|read"を指定したものとみなします。
 // 形態素品詞フィルタ : 出力対象とする品詞を配列で指定します。省略時は全形態素を出力します。設定可能な項目は「形態素解析APIの品詞一覧（https://labs.goo.ne.jp/api/jp/morphological-analysis-pos_filter）」をご参照ください。
-$entityResult4 = GooLabApi::callMorph('美しく飛んでいる燕。料理を美味しく作る。', ['form','pos','read'], ['名詞']);
+$morphResult3 = GooLabApi::callMorph('美しく飛んでいる燕。料理を美味しく作る。', ['form','pos','read'], ['名詞']);
 
+//ひらがな化API
+$hiraganaResult1 = GooLabApi::callHiragana('漢字が混ざっている文章');
+
+//ひらがな化API カタナカ
+$hiraganaResult2 = GooLabApi::callHiragana('漢字が混ざっている文章', 'katakana');
 ```
 
 ## 手動によるクラスのインスタンス化
